@@ -32,8 +32,17 @@
 						<td th:text="${tempEmployee.lastName}"></td>
 						<td th:text="${tempEmployee.email}"></td>
 						<td>
-							<a th:href="@{/employees/list/}">
+							<a th:href="@{/employees/view-employee(employeeId=${tempEmployee.id})}"
+								class="btn btn-primary">
 								View
+							</a> 
+							<a th:href="@{/employees/update-employee(employeeId=${tempEmployee.id})}"
+								class="btn btn-warning">
+								Update
+							</a>
+							<a th:href="@{/employees/delete-employee(employeeId=${tempEmployee.id})}"
+								class="btn btn-danger">
+								Delete
 							</a>
 						</td>					
 					</tr>

@@ -9,17 +9,14 @@
 	</head>
 	<body>
 		<div class="container mt-5">	
-			<h3>Save Employee</h3>
+			<h3>Employee Details</h3>
 			<hr>
-			<form action="#" th:action="@{/employees/save}" th:object="${employee}" method="POST">
-				
-				<input type="hidden" th:field="*{id}">
-				<input type="text" th:field="*{firstName}" class="form-control mb-4 col-4" placeholder="First Name">
-				<input type="text" th:field="*{lastName}" class="form-control mb-4 col-4" placeholder="Last Name">
-				<input type="text" th:field="*{email}" class="form-control mb-4 col-4" placeholder="email">
-				<button type="submit" class="btn btn-info col-2">Save</button>
-				
-			</form>
+			<div class="mt-2">
+				<p>Employee Id: <span th:text=${employee.id}></span> </p>
+				<p>Employee First Name: <span th:text=${employee.firstName}></span> </p>
+				<p>Employee Last Name: <span th:text=${employee.lastName}></span> </p>
+				<p>Employee Email: <span th:text=${employee.email}></span> </p>
+			</div>
 			<div class="mt-2">
 				<a th:href="@{/employees/list}">Back to Employee List</a>
 			</div>

@@ -9,9 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/employees")
@@ -38,16 +38,16 @@ public class EmployeeController {
 	}
 	
 	// Map data to view single employee
-	@GetMapping("/list/{employeeId}")
-	public String viewEmployee(@PathVariable int employeeId, Model theModel) {
+	@GetMapping("/view-employee")
+	public String viewEmployee(@RequestParam("employeeId") int theId, Model theModel) {
 		
 		// get employee details
-		Employee theEmployee = employeeService.findById(employeeId);
+		Employee theEmployee = employeeService.findById(theId);
 		
 		//add data to spring model
-		theModel.addAttribute("employees", theEmployee);
+		theModel.addAttribute("employee", theEmployee);
 		
-		return "employees/list-employees";
+		return "employees/view-employee";
 		
 	}
 	
@@ -76,7 +76,18 @@ public class EmployeeController {
 		
 	}
 	
-	
+	// Map link to show update employee
+	@GetMapping("update-employee")
+	public String updateEmployee(@RequestParam("employeeId") int theId, Model theModel) {
+		
+		// get employee details
+		Employee theEmployee = employeeService.findById(theId);
+		
+		// populate data in model
+		theModel.addAttribute("employee", theEmployee);
+		
+		return "employees/employee-form";
+	}
 }
 
 
