@@ -41,6 +41,7 @@
 								Update
 							</a>
 							<a th:href="@{/employees/delete-employee(employeeId=${tempEmployee.id})}"
+								onclick="if(!(confirm('Are you sure you want to delete employee?'))) return false;"
 								class="btn btn-danger">
 								Delete
 							</a>
