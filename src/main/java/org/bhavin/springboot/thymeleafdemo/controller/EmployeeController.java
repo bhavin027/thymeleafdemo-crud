@@ -77,7 +77,7 @@ public class EmployeeController {
 	}
 	
 	// Map link to show update employee
-	@GetMapping("update-employee")
+	@GetMapping("/update-employee")
 	public String updateEmployee(@RequestParam("employeeId") int theId, Model theModel) {
 		
 		// get employee details
@@ -87,6 +87,18 @@ public class EmployeeController {
 		theModel.addAttribute("employee", theEmployee);
 		
 		return "employees/employee-form";
+	}
+	
+	// Map to delete employee
+	@GetMapping("/delete-employee")
+	public String deleteEmployee(@RequestParam("employeeId") int theId) {
+		
+		// delete employee data
+		employeeService.deleteById(theId);
+		
+		//redirect to emplyee list page
+		return "redirect:/employees/list";
+		
 	}
 }
 
